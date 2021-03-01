@@ -3,7 +3,10 @@ import { createSlice } from '@reduxjs/toolkit';
 export const inviteSlice = createSlice({
   name: 'invite',
   initialState: {
-    value: 0,
+   going: [],
+
+   notGoing: [],
+   
   },
   reducers: {
     increment: state => {
@@ -19,10 +22,16 @@ export const inviteSlice = createSlice({
     incrementByAmount: (state, action) => {
       state.value += action.payload;
     },
+    addToGoing: (state, action) => {
+      const goingAray = { ...action.payload, going: true }
+      const isGoing = state.going.find(
+        (person) => person.id.value === goingAray.id.value
+      )
+    }
   },
 });
 
-export const { increment, decrement, incrementByAmount } = inviteSlice.actions;
+export const { increment, decrement, incrementByAmount, addToGoing } = inviteSlice.actions;
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
@@ -33,6 +42,8 @@ export const incrementAsync = amount => dispatch => {
     dispatch(incrementByAmount(amount));
   }, 1000);
 };
+
+
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
