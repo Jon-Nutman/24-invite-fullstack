@@ -4,7 +4,6 @@ export const inviteSlice = createSlice({
   name: 'invite',
   initialState: {
    going: [],
-
    notGoing: [],
    
   },
@@ -24,9 +23,15 @@ export const inviteSlice = createSlice({
     },
     addToGoing: (state, action) => {
       const goingAray = { ...action.payload, going: true }
-      const isGoing = state.going.find(
-        (person) => person.id.value === goingAray.id.value
-      )
+      // const isGoing = state.going.find(
+      //   (person) => person.id.value === goingAray.id.value
+      // )
+    },
+    addToNotGoing: (state, action) => {
+      const goingAray = { ...action.payload, going: false }
+      // const isGoing = state.going.find(
+      //   (person) => person.id.value === goingAray.id.value
+      // )
     }
   },
 });
