@@ -62,7 +62,7 @@ export default function InvitePage() {
         {person.last}
       </span>
       <span className='card-phone'>Phone: {person.phone}</span>
-      <span className='card-email'>{person.email}</span>
+      <span className='card-email'>Email: {person.email}</span>
       <div className="checkAndTimes">
         <button onClick={() => addToGoing()}>
           <FaCheck />
